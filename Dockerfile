@@ -1,4 +1,4 @@
-FROM postgres:13
+FROM ghcr.io/railwayapp-templates/postgres-ssl:13
 
 COPY ./init.sh /docker-entrypoint-initdb.d/init.sh
 
