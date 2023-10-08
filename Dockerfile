@@ -2,6 +2,8 @@ FROM ghcr.io/railwayapp-templates/postgres-ssl:13
 
 COPY ./init.sh /docker-entrypoint-initdb.d/init.sh
 
+VOLUME [ "/var/lib/postgresql/data" ]
+
 ARG POSTGRES_USER=postgres
 ARG POSTGRES_PASSWORD=postgres
 ARG POSTGRES_DB=postgres
