@@ -1,6 +1,6 @@
 FROM ghcr.io/railwayapp-templates/postgres-ssl:13
 
-COPY ./init.sh /docker-entrypoint-initdb.d/00-init-users.sh
+COPY ./init.sh /docker-entrypoint-initdb.d/init-users.sh
 
 ARG POSTGRES_USER=postgres
 ARG POSTGRES_PASSWORD=postgres
