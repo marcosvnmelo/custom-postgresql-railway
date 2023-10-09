@@ -3,9 +3,7 @@ set -e
 
 POSTGRES="psql --username ${POSTGRES_USER}"
 
-# Create ChatWoot user
-echo "Creating database role: ${CW_POSTGRES_USER}"
-
+# Create users and databases
 $POSTGRES <<-EOSQL
 CREATE USER ${CW_POSTGRES_USER} WITH CREATEDB PASSWORD '${CW_POSTGRES_PASSWORD}';
 ALTER USER ${CW_POSTGRES_USER} WITH SUPERUSER;
@@ -22,3 +20,9 @@ CREATE DATABASE ${TB_POSTGRES_DB} OWNER ${TB_POSTGRES_USER};
 
 CREATE DATABASE ${N8N_POSTGRES_DB} OWNER ${N8N_POSTGRES_USER};
 EOSQL
+
+echo "Successfully created database roles: ${CW_POSTGRES_USER}, ${TB_POSTGRES_USER}, ${N8N_POSTGRES_USER}"
+
+mv ./init-ssl.sh.bak ./init-ssl.sh
+
+./init-ssl.sh
